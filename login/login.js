@@ -28,7 +28,7 @@ loginForm.addEventListener("submit", (e) => {
         localStorage.setItem("usuario", usuario);
 
         // RUTA VACÍA PARA QUE OTROS COLABORADORES LA DEFINAN
-        const RUTA_HOME = "";
+        const RUTA_HOME = "../index.html";
 
         window.location.href = RUTA_HOME;
 

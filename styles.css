@@ -219,3 +219,17 @@ header {
     background: #008fd5;
     border-radius: 10px;
 }
+
+.login-btn {
+    background: #008fd5;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 143, 213, 0.25);
+}
+
+.login-btn:hover {
+    background: #0075b0;
+    transform: translateY(-3px);
+}
