@@ -6,13 +6,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Libros | Biblioteca Virtual</title>
 
-    <link rel="stylesheet" href="styles.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <style>
+        /* Configuración General */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        /* Barra de Navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 15px 5%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo span {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #3b82f6;
+        }
+
+        /* Contenedores Principales */
+        .page-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #64748b;
+        }
+
+        /* Cuadrícula de Libros */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        /* Tarjeta del Libro */
+        .book-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15 rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Imagen / Portada */
+        .book-cover {
+            position: relative;
+            height: 380px;
+            background-color: #cbd5e1;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Etiquetas de Estado */
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .status-badge.available { background-color: #10b981; }
+        .status-badge.borrowed { background-color: #f59e0b; }
+        .status-badge.reference { background-color: #64748b; }
+
+        /* Cuerpo de Información */
+        .book-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .book-genre {
+            font-size: 0.75rem;
+            color: #3b82f6;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .book-title {
+            font-size: 1.25rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .book-specs {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            background-color: #f8fafc;
+            padding: 8px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        /* Sección de Resumen Extenso */
+        .book-summary {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.6;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 12px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .book-summary h3 {
+            font-size: 0.9rem;
+            color: #0f172a;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Botones de Acción */
+        .btn-action {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-action:hover {
+            background-color: #3b82f6;
+        }
+
+        .btn-action.disabled {
+            background-color: #cbd5e1;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .btn-action.reference-btn {
+            background-color: #f1f5f9;
+            color: #64748b;
+            border: 1px dashed #cbd5e1;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,9 +247,101 @@
     <main class="page-container">
         <section class="page-header">
             <h1>Catálogo de Libros</h1>
+            <p>Explora nuestra colección digital con sinopsis completas y disponibilidad en tiempo real.</p>
+        </section>
+
+        <section class="catalog-grid">
+            
+            <article class="book-card">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=600" alt="Cien años de soledad">
+                    <span class="status-badge available">Disponible</span>
+                </div>
+                <div class="book-info">
+                    <span class="book-genre">Ficción / Realismo Mágico</span>
+                    <h2 class="book-title">Cien años de soledad</h2>
+                    <p class="book-author">Por: <strong>Gabriel García Márquez</strong></p>
+                    <div class="book-specs">
+                        <span>Año: 1967</span>
+                        <span>Páginas: 471</span>
+                        <span>ISBN: 978-0307474728</span>
+                    </div>
+                    <div class="book-summary">
+                        <h3>Resumen:</h3>
+                        <p>Esta obra cumbre de la literatura hispanoamericana narra la historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo. Fundado por José Arcadio Buendía, el pueblo es testigo del auge, las guerras civiles, la llegada de los inventos y el trágico declive de una estirpe condenada irremediablemente a la soledad y al olvido cósmico.</p>
+                    </div>
+                    <button class="btn-action">Solicitar Préstamo</button>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=600" alt="Breve historia del tiempo">
+                    <span class="status-badge borrowed">Prestado</span>
+                </div>
+                <div class="book-info">
+                    <span class="book-genre">Ciencia / Divulgación</span>
+                    <h2 class="book-title">Breve historia del tiempo</h2>
+                    <p class="book-author">Por: <strong>Stephen Hawking</strong></p>
+                    <div class="book-specs">
+                        <span>Año: 1988</span>
+                        <span>Páginas: 256</span>
+                        <span>ISBN: 978-8439733471</span>
+                    </div>
+                    <div class="book-summary">
+                        <h3>Resumen:</h3>
+                        <p>Stephen Hawking intenta explicar de manera sencilla y accesible para el público general los conceptos más complejos de la cosmología moderna. A través de sus páginas, el lector viaja a través del espacio y el tiempo, explorando las leyes de la gravedad, la mecánica cuántica, la creación del universo mediante el Big Bang y los misterios destructivos de los agujeros negros.</p>
+                    </div>
+                    <button class="btn-action disabled" disabled>Reservar en Espera</button>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1629992101753-56d196c8aabb?auto=format&fit=crop&q=80&w=600" alt="Eloquent JavaScript">
+                    <span class="status-badge available">Disponible</span>
+                </div>
+                <div class="book-info">
+                    <span class="book-genre">Informática / Programación</span>
+                    <h2 class="book-title">Eloquent JavaScript</h2>
+                    <p class="book-author">Por: <strong>Marijn Haverbeke</strong></p>
+                    <div class="book-specs">
+                        <span>Año: 2018</span>
+                        <span>Páginas: 448</span>
+                        <span>ISBN: 978-1593279509</span>
+                    </div>
+                    <div class="book-summary">
+                        <h3>Resumen:</h3>
+                        <p>Un libro de referencia indispensable enfocado en enseñar a escribir código limpio y eficiente. No solo abarca la sintaxis pura de JavaScript, sino que profundiza en la programación funcional, la gestión de estructuras de datos orientadas al navegador, el control del DOM y una introducción práctica al ecosistema moderno de Node.js mediante proyectos reales.</p>
+                    </div>
+                    <button class="btn-action">Solicitar Préstamo</button>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=600" alt="1984">
+                    <span class="status-badge reference">Solo Sala</span>
+                </div>
+                <div class="book-info">
+                    <span class="book-genre">Ficción / Distopía</span>
+                    <h2 class="book-title">1984</h2>
+                    <p class="book-author">Por: <strong>George Orwell</strong></p>
+                    <div class="book-specs">
+                        <span>Año: 1949</span>
+                        <span>Páginas: 326</span>
+                        <span>ISBN: 978-8423351718</span>
+                    </div>
+                    <div class="book-summary">
+                        <h3>Resumen:</h3>
+                        <p>Una alarmante y sombría novela de ficción distópica en la que el Gran Hermano controla absolutamente cada detalle de la vida de los ciudadanos. Winston Smith, el protagonista, decide rebelarse secretamente contra una dictadura asfixiante que reescribe la historia, elimina el pensamiento crítico y prohíbe el amor humano con el fin de perpetuar el poder absoluto del Partido.</p>
+                    </div>
+                    <button class="btn-action reference-btn" disabled>Consultar en Sala</button>
+                </div>
+            </article>
+
         </section>
     </main>
 
 </body>
-
 </html>
