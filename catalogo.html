@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Libros | Biblioteca Virtual</title>
+    <link rel="stylesheet" href="navbar.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,45 +25,13 @@
             color: #334155;
         }
 
-        /* Barra de Navegación */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1e293b;
-            padding: 15px 5%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo span {
-            color: #ffffff;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #3b82f6;
-        }
-
+        
         /* Contenedores Principales */
         .page-container {
             max-width: 1250px;
             margin: 0 auto;
             padding: 40px 20px;
+            padding-top: 6rem;
         }
 
         .page-header {
@@ -237,12 +206,12 @@
 
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a class="active" href="catalogo.html">Catálogo de Libros</a></li>
+                <li><a href="catalogo.html">Catálogo de Libros</a></li>
                 <li><a href="prestamos.html">Préstamos</a></li>
                 <li><a href="contactos.html">Contactos</a></li>
-                    <li><a class="login-btn" href="login/login.html">Iniciar Sesión</a></li>
-
-            </ul>
+                <li><a class="login-btn" href="login/login.html">Iniciar Sesión</a></li>
+            </ul>   
+    
         </nav>
     </header>
 

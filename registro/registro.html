@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual - Login</title>
-
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/registro/registro.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="login-container">
+   <div class="registro-container">
 
-        <div class="login-card">
+        <div class="registro-card">
 
             <div class="logo">
                 <i class="fa-solid fa-book-open-reader"></i>
@@ -22,10 +20,10 @@
             <h1>Biblioteca Virtual</h1>
 
             <p class="subtitle">
-                Inicia sesión para acceder al sistema
+               Registrate gratis
             </p>
 
-            <form id="loginForm">
+            <form id="registroForm">
 
                 <div class="input-group">
                     <i class="fa-solid fa-user"></i>
@@ -47,19 +45,26 @@
                     >
                 </div>
 
-                <button type="submit" id="submit" class="btn btn-primary">Iniciar Sesion</button>
-
-                <div class="footer-container">
-                    <p class="pe">¿No tienes cuenta aún?</p>
-                    <a href="/registro/registro.html" id="registro" class="btn-registro">Registrarse</a>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                        type="password"
+                        id="repetir_contraseña"
+                        placeholder="Repetir contraseña"
+                        required
+                    >
                 </div>
-
+                
+                <button class="btn btn-primary" type="submit" id="sumbit">Registrarse</button>
+             
+                
             </form>
+
+            <p id="mensaje"></p>
 
         </div>
 
     </div>
-
 </body>
-  <script src="login.js"></script>
+<script src="/registro/registro.js"></script>
 </html>

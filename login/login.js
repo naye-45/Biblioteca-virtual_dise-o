@@ -1,41 +1,31 @@
-const loginForm = document.getElementById("loginForm");
-const mensaje = document.getElementById("mensaje");
+document.addEventListener("DOMContentLoaded", () => {
+    const $form = document.getElementById("loginForm");
 
-/*
-    Usuario único permitido
-*/
-const usuarioPermitido = {
-    usuario: "bibliotecario",
-    password: "12345"
-};
+    $form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-/*
-    Login
-*/
-loginForm.addEventListener("submit", (e) => {
+        const inputUser = document.getElementById("username").value;
+        const inputPass = document.getElementById("password").value;
 
-    e.preventDefault();
+        const savedUser = localStorage.getItem("userSaved");
+        const savedPass = localStorage.getItem("passSaved");
 
-    const usuario = document.getElementById("usuario").value;
-    const password = document.getElementById("password").value;
-
-    if (
-        usuario === usuarioPermitido.usuario &&
-        password === usuarioPermitido.password
-    ) {
-
-        localStorage.setItem("sesionActiva", "true");
-        localStorage.setItem("usuario", usuario);
-
-        // RUTA VACÍA PARA QUE OTROS COLABORADORES LA DEFINAN
-        const RUTA_HOME = "../index.html";
-
-        window.location.href = RUTA_HOME;
-
-    } else {
-
-        mensaje.textContent = "Usuario o contraseña incorrectos";
-        mensaje.className = "error";
-    }
-
+        if (inputUser === savedUser && inputPass === savedPass) {
+            Swal.fire({
+                title: "¡Bienvenido/a de vuelta!",
+                icon: "success",
+                draggable: true
+            }).then(() => {
+                window.location.href = "../index.html";
+            });
+        } else {
+            Swal.fire({
+                icon: "error",      // ← minúscula
+                title: "Vaya...",
+                text: "¡Contraseña o usuario incorrectos!"
+            });
+            document.getElementById("password").value = "";
+            document.getElementById("password").focus();
+        }
+    });
 });

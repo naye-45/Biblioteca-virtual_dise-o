@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos | Biblioteca Virtual</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contactos.css">
+    <link rel="stylesheet" href="navbar.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,16 +28,125 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo de Libros</a></li>
                 <li><a href="prestamos.html">Préstamos</a></li>
-                <li><a class="active" href="contactos.html">Contactos</a></li>
-            </ul>
+                <li><a href="contactos.html">Contactos</a></li>
+                <li><a class="login-btn" href="login/login.html">Iniciar Sesión</a></li>
+            </ul>   
+    
         </nav>
     </header>
 
-    <main class="page-container">
-        <section class="page-header">
+    <main class="contactos-wrapper">
+ 
+        <!-- Encabezado -->
+        <div class="section-header">
             <h1>Contactos</h1>
-        </section>
+            <p>Estamos aquí para ayudarte. Escríbenos o visítanos.</p>
+            <div class="header-divider"></div>
+        </div>
+ 
+        <!-- Tarjetas de información -->
+        <div class="info-cards">
+ 
+            <div class="info-card">
+                <div class="icon-circle">
+                    <img  class="direccion" src="/images/direccion.png" alt="direccion">
+                </div>
+                <h3>Dirección</h3>
+                <p>Simon Bolivar y Manuel Vega Esq.Cuenca ECs</p>
+            </div>
+ 
+            <div class="info-card">
+                <div class="icon-circle">
+                    <img src="/images/telefono.png" alt="telefono">
+                </div>
+                <h3>Teléfono</h3>
+                <p><a href="tel:+5937012345678">(593-7) 283 8323 / 284 3619 / 0996976449</a></p>
+                <span class="card-note">Lun – Vie, 8:00 – 17:00</span>
+            </div>
+ 
+            <div class="info-card">
+                <div class="icon-circle">
+                    <img src="/images/correo.png" alt="correo">
+                </div>
+                <h3>Correo</h3>
+                <p><a href="mailto:info@bibliotecavirtual.ec">info@sudamericano.edu.ec</a></p>
+            </div>
+ 
+            <div class="info-card">
+                <div class="icon-circle">
+                    <img src="images/tiempo.png" alt="horario">
+                </div>
+                <h3>Horario</h3>
+                <p>Lun – Vie: 08:00 – 18:00</p>
+                <span class="card-note">Sáb: 09:00 – 13:00</span>
+            </div>
+ 
+        </div>
+ 
+        <!-- Formulario de contacto -->
+        <div class="form-card">
+            <h2>Envíanos un mensaje</h2>
+ 
+            <form id="contactForm">
+ 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" placeholder="tu@correo.com" required>
+                    </div>
+                </div>
+ 
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <select id="asunto">
+                        <option value="">Selecciona un motivo…</option>
+                        <option>Consulta sobre un libro</option>
+                        <option>Préstamo de material</option>
+                        <option>Problema técnico</option>
+                        <option>Sugerencia</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+ 
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí…" required></textarea>
+                </div>
+ 
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Enviar mensaje
+                </button>
+ 
+                <div class="success-msg" id="successMsg">
+                    <i class="fa-solid fa-circle-check"></i>
+                    ¡Mensaje enviado! Te responderemos pronto.
+                </div>
+ 
+            </form>
+        </div>
+ 
+        <div class="map-container">
+            <!-- Reemplaza el src con tu enlace de Google Maps embed -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.603278987407!2d-78.99889111023259!3d-2.8982299595490404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1816084ee52b%3A0x87169256a825242d!2sInstituto%20tecnol%C3%B3gico%20Sudamericano%2C%20Manuel%20Vega%2C%20Cuenca%2C%20Ecuador!5e0!3m2!1ses-419!2sus!4v1781834343153!5m2!1ses-419!2sus"
+                width="100%"
+                height="280"
+                style="border: 0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación de la Biblioteca Virtual">
+            </iframe>
+        </div>
+ 
     </main>
+ 
+    <script src="contactos.js"></script>
 
 </body>
 
