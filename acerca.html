@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de - Biblioteca Virtual</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #59bce0, #0d306d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 850px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+            animation: aparecer 0.8s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        p.subtitulo {
+            text-align: center;
+            color: gray;
+            margin-bottom: 30px;
+        }
+
+        .seccion {
+            margin-bottom: 25px;
+        }
+
+        .seccion h2 {
+            color: #2a5298;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .seccion p {
+            text-align: left;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .tarjetas {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .tarjeta {
+            flex: 1;
+            background: #f4f8fc;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
+        }
+
+        .tarjeta .icono {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .tarjeta h3 {
+            color: #1e3c72;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .tarjeta p {
+            color: gray;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .horarios {
+            background: #f4f8fc;
+            border-radius: 12px;
+            padding: 18px 22px;
+        }
+
+        .horarios ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .horarios li {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #e0e6ec;
+            color: #333;
+        }
+
+        .horarios li:last-child {
+            border-bottom: none;
+        }
+
+        @media(max-width:700px) {
+            .tarjetas {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Biblioteca Virtual</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo de Libros</a></li>
+                <li><a href="prestamos.html">Préstamos</a></li>
+                <li><a href="contactos.html">Contactos</a></li>
+                <li><a href="acerca.html">Acerca de</a></li>
+                <li><a class="login-btn" href="login/login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+
+        <h1>🏛️ Acerca de Nosotros</h1>
+
+        <p class="subtitulo">Conoce más sobre la Biblioteca Virtual del Instituto Sudamericano</p>
+
+        <div class="seccion">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                La Biblioteca Virtual del Instituto Sudamericano es un espacio digital creado para
+                facilitar el acceso al conocimiento. Ponemos a disposición de estudiantes, docentes
+                y la comunidad en general un catálogo de libros, un sistema de préstamos en línea
+                y canales de contacto directo con nuestro equipo.
+            </p>
+        </div>
+
+        <div class="seccion">
+            <h2>Nuestra misión</h2>
+            <p>
+                Promover el hábito de la lectura y facilitar el acceso a material bibliográfico de
+                calidad, apoyando la formación académica de nuestra comunidad estudiantil mediante
+                herramientas digitales modernas y accesibles.
+            </p>
+        </div>
+
+        <div class="seccion">
+            <h2>¿Qué ofrecemos?</h2>
+
+            <div class="tarjetas">
+
+                <div class="tarjeta">
+                    <div class="icono">📚</div>
+                    <h3>Catálogo</h3>
+                    <p>Amplia variedad de libros disponibles para consulta y préstamo.</p>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="icono">📝</div>
+                    <h3>Préstamos</h3>
+                    <p>Solicita tus libros en línea de forma rápida y sencilla.</p>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="icono">💬</div>
+                    <h3>Atención</h3>
+                    <p>Contáctanos para resolver dudas o sugerencias.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="seccion">
+            <h2>Horario de atención</h2>
+
+            <div class="horarios">
+                <ul>
+                    <li><span>Lunes - Viernes</span><span>08:00 - 18:00</span></li>
+                    <li><span>Sábados</span><span>09:00 - 13:00</span></li>
+                    <li><span>Domingos</span><span>Cerrado</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -24,11 +24,11 @@ loginForm.addEventListener("submit", (e) => {
         password === usuarioPermitido.password
     ) {
 
-        localStorage.setItem("sesionActiva", "true");
+        sessionStorage.setItem("sesionActiva", "true");
         localStorage.setItem("usuario", usuario);
 
         // RUTA VACÍA PARA QUE OTROS COLABORADORES LA DEFINAN
-        const RUTA_HOME = "";
+        const RUTA_HOME = "../index.html";
 
         window.location.href = RUTA_HOME;
 
